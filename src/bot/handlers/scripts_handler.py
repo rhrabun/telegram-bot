@@ -1,14 +1,14 @@
 from telegram import Update, ReplyKeyboardRemove, ParseMode
 from telegram.ext import CallbackContext, ConversationHandler
 
-from ..helpers import AWSHelper, user_id_filter
 from ..states import SCRIPTS_STATE
+from ..helpers import AWSHelper, filter_id, log
 from ..markups import dynamic_keyboard, default_keyboard
 
 
-@user_id_filter
+@log
+@filter_id
 def scripts_handler(event: Update, _: CallbackContext) -> int:
-    print(event)
     scripts = AWSHelper.get_scripts_list()
 
     event.message.reply_text(
@@ -20,10 +20,9 @@ def scripts_handler(event: Update, _: CallbackContext) -> int:
     return SCRIPTS_STATE
 
 
-@user_id_filter
+@log
+@filter_id
 def run_lambda_handler(event: Update, context: CallbackContext) -> None:
-    print(event)
-
     func_name = event['message']['text']
 
     event.message.reply_text(

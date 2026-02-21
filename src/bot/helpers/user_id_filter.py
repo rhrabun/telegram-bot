@@ -6,7 +6,7 @@ from ..config import TG_CHAT_ID
 
 
 
-def user_id_filter(func):
+def filter_id(func):
     @wraps(func)
     def wrapper(event, context, *args, **kwargs):
         chat_id = int(event['message']['chat']['id'])
