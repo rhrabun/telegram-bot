@@ -4,5 +4,4 @@
 ---
 
 ## ToDo's
-* Sort imports
-* Implement researched selenium functionality
+* Deploy to AWS ECS using Terraform
