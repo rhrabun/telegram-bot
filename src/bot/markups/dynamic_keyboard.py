@@ -1,10 +1,7 @@
+from ..helpers import split_list_into_chunks
+
 from telegram import ReplyKeyboardMarkup
 
-
-def split_list_into_chunks(l, chunk_size):
-    n = 3
-    for i in range(0, len(l), n):
-        yield l[i:i+n]
 
 
 def dynamic_keyboard(items, append_cancel = True) -> ReplyKeyboardMarkup:
