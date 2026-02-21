@@ -23,7 +23,6 @@ def server_handler(event: Update, context: CallbackContext) -> int:
 @log
 @filter_id
 def status_handler(event: Update, context: CallbackContext) -> int:
-    print(event)
     event.message.reply_text(
         "The bot is working",
         quote=True,
