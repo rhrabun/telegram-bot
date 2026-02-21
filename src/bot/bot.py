@@ -1,8 +1,6 @@
-import logging
-import os
-import signal
-import datetime
 import pytz
+import logging
+import datetime
 
 from telegram import Update, ReplyKeyboardRemove
 from telegram.ext import (
@@ -59,7 +57,7 @@ class BotObj(object):
             morning_handler,
             time=morning_time
         )
-        
+
 
     def main(self):
         self.set_handlers()

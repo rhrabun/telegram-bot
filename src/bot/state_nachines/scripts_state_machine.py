@@ -5,9 +5,7 @@ from telegram.ext import (
     ConversationHandler
 )
 
-from ..config import TG_CHAT_ID
 from ..states import SCRIPTS_STATE
-
 from ..handlers import (
     default_handler,
     scripts_handler,

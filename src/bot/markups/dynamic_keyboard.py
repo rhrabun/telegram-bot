@@ -3,7 +3,6 @@ from ..helpers import split_list_into_chunks
 from telegram import ReplyKeyboardMarkup
 
 
-
 def dynamic_keyboard(items, append_cancel = True) -> ReplyKeyboardMarkup:
     """This function takes a list of items that keyboard must contain
     and returns dynamically created keyboard with those items
