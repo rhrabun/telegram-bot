@@ -22,7 +22,7 @@ def scripts_handler(event: Update, _: CallbackContext) -> int:
 
 @log
 @filter_id
-def run_lambda_handler(event: Update, context: CallbackContext) -> None:
+def run_lambda_handler(event: Update, context: CallbackContext) -> int:
     func_name = event['message']['text']
 
     event.message.reply_text(
