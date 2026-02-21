@@ -5,5 +5,7 @@ def log(func):
     @wraps(func)
     def wrapper(event, context, *args, **kwargs):
         print(f'\n{event}')
+        
+        return func(event, context, *args, **kwargs)
 
     return wrapper
