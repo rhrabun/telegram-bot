@@ -1,7 +1,5 @@
-# Folders
-venv
-.git
-.vscode
-__pycache__
-# Files
-config.py
+.env
+/ansible/inventory.yml
+/ansible/vars/secrets.yml
+/telegram-bot
+.DS_Store

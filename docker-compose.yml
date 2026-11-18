@@ -1,0 +1,7 @@
+services:
+  bot:
+    build: .
+    restart: unless-stopped
+    mem_limit: 128m
+    env_file:
+      - .env

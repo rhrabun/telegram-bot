@@ -1,12 +1,15 @@
-FROM python:3.10.5-slim
+FROM golang:1.27-alpine AS build
 
-WORKDIR /usr/src/app
+WORKDIR /src
 
-RUN python3 -m pip install -U pip
+COPY go.mod go.sum ./
+RUN go mod download
 
-COPY requirements.txt .
-RUN python3 -m pip install --no-cache-dir -r requirements.txt
+COPY . .
+RUN CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" -o /out/telegram-bot .
 
-COPY src/ .
+FROM gcr.io/distroless/static-debian12:nonroot
 
-CMD [ "python3", "-u", "./main.py" ]
+COPY --from=build /out/telegram-bot /telegram-bot
+
+ENTRYPOINT ["/telegram-bot"]
