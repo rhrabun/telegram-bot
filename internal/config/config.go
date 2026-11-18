@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-const defaultModelID = "scribe_v2"
+const defaultModelID = "scribe_v3"
 
 type Config struct {
 	TelegramToken    string
