@@ -1,0 +1,52 @@
+---
+
+- name: Deploy telegram-bot stack
+  hosts: all
+  gather_facts: true
+  vars_files:
+    - vars/secrets.yml
+    - vars/defaults.yml
+
+  pre_tasks:
+    - name: Require docker installed
+      ansible.builtin.stat:
+        path: /usr/bin/docker
+      register: docker_bin
+
+    - name: Fail if docker missing
+      ansible.builtin.fail:
+        msg: "docker not installed."
+      when: not docker_bin.stat.exists
+
+  tasks:
+    - name: Create stack dir
+      ansible.builtin.file:
+        path: "{{ stack_dir }}"
+        state: directory
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"
+        mode: "0755"
+
+    - name: Clone telegram-bot into stack dir
+      ansible.builtin.git:
+        repo: "{{ git_repo }}"
+        dest: "{{ stack_dir }}"
+        version: main
+        force: true
+
+    - name: Template .env from vault vars
+      ansible.builtin.template:
+        src: env.j2
+        dest: "{{ stack_dir }}/.env"
+        mode: "0600"
+
+    - name: Bring up the stack
+      ansible.builtin.command:
+        cmd: docker compose up -d --build
+        chdir: "{{ stack_dir }}"
+      register: compose
+      changed_when: true
+
+    - name: Show compose output
+      ansible.builtin.debug:
+        var: compose.stdout_lines

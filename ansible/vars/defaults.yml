@@ -1,0 +1,4 @@
+git_repo: https://github.com/rhrabun/telegram-bot.git
+
+home_dir: "/home/{{ ansible_user }}"
+stack_dir: "{{ home_dir }}/telegram-bot"
