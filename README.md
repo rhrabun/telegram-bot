@@ -8,7 +8,7 @@ Telegram bot for some useful automations.
 | --- | --- | --- | --- |
 | `TELEGRAM_BOT_TOKEN` | yes | | Bot token from @BotFather |
 | `ELEVENLABS_API_KEY` | yes | | ElevenLabs API key |
-| `ELEVENLABS_MODEL_ID` | no | `scribe_v3` | Speech-to-text model |
+| `ELEVENLABS_MODEL_ID` | no | `scribe_v2` | Speech-to-text model |
 | `ALLOWED_CHAT_ID` | no | empty (all chats) | Comma-separated chat IDs allowed to use the bot |
 
 ## Local run
