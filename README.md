@@ -2,15 +2,6 @@
 
 Telegram bot for some useful automations.
 
-## Features
-
-- Voice messages, including forwarded ones, are transcribed with ElevenLabs
-  Speech-to-Text. Each transcription replies to its voice message.
-- Transcriptions run in parallel; replies keep the order the messages arrived in.
-- A failed transcription replies with the reason.
-- Non-voice messages get a one-line hint.
-- Optional chat allowlist.
-
 ## Configuration
 
 | Variable | Required | Default | Meaning |
